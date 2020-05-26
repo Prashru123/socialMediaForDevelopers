@@ -20,14 +20,14 @@ route.get('/', auth, async (req, res) => {
   }
 });
 
-//@desc   AUthenticate user and get token
+//@desc   Authenticate user and get token
 //@req    POST /api/auth
 //access  Public
 
 route.post(
   '/',
   [
-    check('email', 'Please enter the eamil').isEmail(),
+    check('email', 'Please enter the email').isEmail(),
     check('password', 'Password is required').exists(),
   ],
   async (req, res) => {
@@ -45,7 +45,7 @@ route.post(
         });
       }
 
-      //comapre password
+      //compare password
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {

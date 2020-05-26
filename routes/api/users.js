@@ -15,7 +15,7 @@ route.post(
   '/',
   [
     check('name', 'Name is required').not().isEmpty(),
-    check('email', 'Please enter the eamil').isEmail(),
+    check('email', 'Please enter the email').isEmail(),
     check('password', 'Please enter password with 6 or more digits').isLength({
       min: 6,
     }),
