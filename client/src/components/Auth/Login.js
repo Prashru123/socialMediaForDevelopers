@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
 import { Link, Redirect } from 'react-router-dom';
-import auth from '../../reducers/auth';
 const Login = ({ login, isAuthenticated }) => {
   const [loginData, setLoginData] = useState({ email: '', password: '' });
 
