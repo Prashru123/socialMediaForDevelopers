@@ -19,7 +19,7 @@ router.get('/me', auth, async (req, res) => {
     if (!profile) {
       return res.status(400).json({ msg: 'User does not have profile' });
     }
-    res.status(200).json({ profile });
+    res.status(200).json(profile);
   } catch (error) {
     return res.status(500).send('Server Error');
   }
@@ -110,7 +110,9 @@ router.get('/', async (req, res) => {
 // @access   Public
 router.get('/user/:user_id', async (req, res) => {
   try {
-    const profile = await Profile.findOne({ user: req.params.user_id });
+    const profile = await Profile.findOne({
+      user: req.params.user_id,
+    }).populate('user', ['name', 'avatar']);
     if (!profile) {
       return res.status(400).json({ msg: 'Profile not found' });
     }
@@ -205,7 +207,7 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
     await profile.save();
     //removes user
 
-    res.json({ profile });
+    res.json(profile);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -286,7 +288,7 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
     await profile.save(); */
     //removes user
 
-    res.json({ profile });
+    res.json(profile);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
