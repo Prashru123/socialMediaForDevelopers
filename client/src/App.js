@@ -21,6 +21,7 @@ import store from './store';
 import Alert from './components/layout/Alert';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
+import Posts from './components/posts/Posts';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -63,6 +64,7 @@ const App = () => {
                 exact
                 component={AddExperience}
               />
+              <ProtectedRoute path='/posts' exact component={Posts} />
             </Switch>
           </section>
         </Fragment>
